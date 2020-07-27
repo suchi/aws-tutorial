@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC">メニュー</h1>
+<ol>
+<li>システム構成</li>
+<li>ネットワーク設定<br>
+2.1. VPC<br>
+2.2. サブネット<br>
+2.3. Internet Gateway<br>
+2.4. ルートテーブル<br>
+2.5. セキュリティグループ</li>
+<li>Bastionaサーバ</li>
+<li>DBサーバ<br>
+4.1. EC2インスタンス作成<br>
+4.2. yumリポジトリファイル作成<br>
+4.3. MongoDBインストール<br>
+4.4. MongoDBパラメーター変更<br>
+4.5. MongoDB起動</li>
+<li>Applicationサーバ<br>
+5.1. EC2インスタンス作成<br>
+5.2. Nodejsインストール
+5.3. yarnインストール
+5.4. gitインストール
+5.5. Growiインストール
+5.6. Growi自動起動設定</li>
+<li>AMI作成</li>
+<li>起動テンプレート</li>
+<li>ターゲットグループ</li>
+<li>ロードバランサ</li>
+<li>Auto Scalingグループ</li>
+<li>動作確認<br>
+11.1. Growi<br>
+11.2. Auto Scalingグループ</li>
+</ol>
+<h1 id="%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E6%88%90">システム構成</h1>
+<p>以下のようにAPPサーバがスケールするシステムを構築する</p>
+<p><img src="./img/system.png" alt="システム構成"></p>
+<h1 id="%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A">ネットワーク設定</h1>
+<ul>
+<li>
+<p>VPC</p>
+<p>ネットワーク(CIDR): 10.0.0.0/16</p>
+</li>
+<li>
+<p>ネットワーク構成</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">種類</th>
+<th style="text-align:left">ネットワーク(CDIR)</th>
+<th style="text-align:left">Route Table</th>
+<th style="text-align:left">Availability Zone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Public  subnet 1</td>
+<td style="text-align:left">10.0.10.0/24</td>
+<td style="text-align:left">Public</td>
+<td style="text-align:left">us-east-1a</td>
+</tr>
+<tr>
+<td style="text-align:left">Public  subnet 2</td>
+<td style="text-align:left">10.0.20.0/24</td>
+<td style="text-align:left">Public</td>
+<td style="text-align:left">us-east-1b</td>
+</tr>
+<tr>
+<td style="text-align:left">Private subnet 1</td>
+<td style="text-align:left">10.0.30.0/24</td>
+<td style="text-align:left">Private</td>
+<td style="text-align:left">us-east-1a</td>
+</tr>
+<tr>
+<td style="text-align:left">Private subnet 2</td>
+<td style="text-align:left">10.0.40.0/24</td>
+<td style="text-align:left">Private</td>
+<td style="text-align:left">us-east-1b</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>ルートテーブル</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">種類</th>
+<th style="text-align:left">Destination</th>
+<th style="text-align:left">Target</th>
+<th style="text-align:left">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Public</td>
+<td style="text-align:left">10.0.0.0/16</td>
+<td style="text-align:left">local</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">0.0.0.0/0</td>
+<td style="text-align:left">Interbet Gateway</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Private</td>
+<td style="text-align:left">10.0.0.0/16</td>
+<td style="text-align:left">local</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">0.0.0.0/0</td>
+<td style="text-align:left">NAT Gateway</td>
+<td style="text-align:left">今回は、TargetにInternet Gatewayを指定</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>セキュリティグループ(SG)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">種類</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Protocol</th>
+<th style="text-align:left">Port Range</th>
+<th style="text-align:left">Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Bastionサーバ</td>
+<td style="text-align:left">SSH</td>
+<td style="text-align:left">TCP</td>
+<td style="text-align:left">22</td>
+<td style="text-align:left">BastionサーバにアクセスするPCのアドレス</td>
+</tr>
+<tr>
+<td style="text-align:left">Webサーバ</td>
+<td style="text-align:left">SSH</td>
+<td style="text-align:left">TCP</td>
+<td style="text-align:left">22</td>
+<td style="text-align:left">BastionサーバのSG</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">HTTP</td>
+<td style="text-align:left">TCP</td>
+<td style="text-align:left">80</td>
+<td style="text-align:left">0.0.0.0/0</td>
+</tr>
+<tr>
+<td style="text-align:left">APPサーバ</td>
+<td style="text-align:left">SSH</td>
+<td style="text-align:left">TCP</td>
+<td style="text-align:left">22</td>
+<td style="text-align:left">BastionサーバのSG</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">Custom TCP</td>
+<td style="text-align:left">TCP</td>
+<td style="text-align:left">3000</td>
+<td style="text-align:left">WebサーバのSG</td>
+</tr>
+<tr>
+<td style="text-align:left">DBサーバ</td>
+<td style="text-align:left">SSH</td>
+<td style="text-align:left">TCP</td>
+<td style="text-align:left">22</td>
+<td style="text-align:left">BastionサーバのSG</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">Custom TCP</td>
+<td style="text-align:left">TCP</td>
+<td style="text-align:left">27017</td>
+<td style="text-align:left">APPサーバのSG</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h2 id="vpc%E4%BD%9C%E6%88%90">VPC作成</h2>
+<p>サービスメニューからVPCを選択して、VPCを作成する</p>
+<ol>
+<li>「VPCの作成」を押す</li>
+</ol>
+<p><img src="./img/create_vpc1.png" alt="VPC作成"></p>
+<ol start="2">
+<li>以下の値を入力し、「作成」を押す</li>
+</ol>
+<ul>
+<li>名前タグ: VPCの名前を指定（任意の値）</li>
+<li>IPv4 CIDR ブロック: VPCのネットワークアドレスを指定</li>
+</ul>
+<p><img src="./img/create_vpc2.png" alt="VPC作成"></p>
+<h2 id="%E3%82%B5%E3%83%96%E3%83%8D%E3%83%83%E3%83%88%E4%BD%9C%E6%88%90">サブネット作成</h2>
+<p>サービスメニューからVPCを選択して、サブネットを4つ作成する</p>
+<ul>
+<li>Public subnet 1</li>
+<li>Public subnet 2</li>
+<li>Private subnet 1</li>
+<li>Private subnet 2</li>
+</ul>
+<ol>
+<li>「サブネットの作成」を押す</li>
+</ol>
+<p><img src="./img/create_subnet1.png" alt="サブネット作成"></p>
+<ol start="2">
+<li>以下の値を入力し、「作成」を押す</li>
+</ol>
+<ul>
+<li>名前タグ: サブネットの名前（任意の値）</li>
+<li>VPC: 「VPC作成」で作成したVPCを選択</li>
+<li>アベイラビリティーゾーン: アベイラビリティーゾーンを選択</li>
+<li>IPv4 CIDRブロック: サブネットのネットワークアドレスを指定</li>
+</ul>
+<p><img src="./img/create_subnet2.png" alt="サブネット作成"></p>
+<h2 id="internet-gateway%E4%BD%9C%E6%88%90">Internet Gateway作成</h2>
+<p>サービスメニューからVPCを選択して、Internet Gatewayを作成する</p>
+<ol>
+<li>「インターネットゲートウェイの作成」を押す</li>
+</ol>
+<p><img src="./img/create_igw1.png" alt="インターネットゲートウェイ作成"></p>
+<ol start="2">
+<li>以下の値を入力し、「インターネットゲートウェイの作成」を押す</li>
+</ol>
+<ul>
+<li>名前タグ: インターネットゲートウェイの名前（任意の値）</li>
+</ul>
+<p><img src="./img/create_igw2.png" alt="インターネットゲートウェイ作成"></p>
+<ol start="3">
+<li>「VPCへアタッチ」を選択</li>
+</ol>
+<p><img src="./img/create_igw3.png" alt="インターネットゲートウェイ作成"></p>
+<ol start="4">
+<li>以下の値を入力し、「インターネットゲートウェイのアタッチ」を押す</li>
+</ol>
+<ul>
+<li>使用可能なVPC: 「VPC作成」で作成したVPCを選択</li>
+</ul>
+<p><img src="./img/create_igw4.png" alt="インターネットゲートウェイ作成"></p>
+<h2 id="%E3%83%AB%E3%83%BC%E3%83%88%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E4%BD%9C%E6%88%90">ルートテーブル作成</h2>
+<p>サービスメニューからVPCを選択して、ルートテーブルを2つ作成する</p>
+<ul>
+<li>public</li>
+<li>private</li>
+</ul>
+<ol>
+<li>「ルートテーブルの作成」を押す</li>
+</ol>
+<p><img src="./img/create_rt1.png" alt="インターネットゲートウェイ作成"></p>
+<ol start="2">
+<li>以下の値を入力し、「作成」を押す</li>
+</ol>
+<ul>
+<li>名前タグ: ルートテーブルの名前（任意の値）</li>
+<li>VPC: 「VPC作成」で作成したVPCを選択</li>
+</ul>
+<p><img src="./img/create_rt2.png" alt="インターネットゲートウェイ作成"></p>
+<h3 id="%E3%83%AB%E3%83%BC%E3%83%88%E3%81%AE%E7%B7%A8%E9%9B%86">ルートの編集</h3>
+<p>ルートを追加する</p>
+<ol>
+<li>
+<p>作成したルートテーブルを選択して、「ルートの編集」を押す
+<img src="./img/create_rt3.png" alt="インターネットゲートウェイ作成"></p>
+</li>
+<li>
+<p>「ルートの追加」を押して、以下を入力し、「ルートの保存」を押す</p>
+</li>
+</ol>
+<ul>
+<li>送信先: 0.0.0.0/0</li>
+<li>ターゲット: 通信の転送先を選択</li>
+</ul>
+<p><img src="./img/create_rt4.png" alt="インターネットゲートウェイ作成"></p>
+<h3 id="%E3%82%B5%E3%83%96%E3%83%8D%E3%83%83%E3%83%88%E3%81%AE%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91">サブネットの関連付け</h3>
+<p>ルートテーブルをサブネットに関連付ける</p>
+<ol>
+<li>作成したルートテーブルを選択して、「サブネットの関連付けの編集」を押す</li>
+</ol>
+<p><img src="./img/create_rt5.png" alt="インターネットゲートウェイ作成"></p>
+<ol start="2">
+<li>ルートテーブルを関連付けるサブネットを選択肢、「保存」を押す</li>
+</ol>
+<p><img src="./img/create_rt6.png" alt="インターネットゲートウェイ作成"></p>
+<h2 id="%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E4%BD%9C%E6%88%90">セキュリティグループ作成</h2>
+<p>サービスメニューからVPCを選択して、セキュリティグループを4つ作成する</p>
+<ul>
+<li>Bastionサーバ</li>
+<li>DBサーバ</li>
+<li>Appサーバ</li>
+<li>Webサーバ</li>
+</ul>
+<ol>
+<li>「セキュリティグループを作成」を押す</li>
+</ol>
+<p><img src="./img/create_sg1.png" alt="セキュリティグループ作成"></p>
+<ol start="2">
+<li>以下を入力し、「セキュリティグループを作成」を押す</li>
+</ol>
+<ul>
+<li>セキュリティグループ名: セキュリティグループの名前（任意の値）</li>
+<li>説明: セキュリティグループの説明（任意の値）</li>
+<li>VPC: 「VPC作成」で作成したVPCを選択</li>
+<li>インバウンドルール: 「ルールを追加」を押してインバウンドルールを追加</li>
+</ul>
+<p><img src="./img/create_sg2.png" alt="セキュリティグループ作成"></p>
+<h1 id="bastion%E3%82%B5%E3%83%BC%E3%83%90%E4%BD%9C%E6%88%90">Bastionサーバ作成</h1>
+<p>サービスメニューからEC2を選択して、Bastionサーバを作成する</p>
+<ol>
+<li>「インスタンスの作成」を押す</li>
+</ol>
+<p><img src="./img/create_bastion1.png" alt="Bastionサーバ作成"></p>
+<ol start="2">
+<li>Amazonマシンイメージ(AMI)の選択
+「Amazon Linux 2 AMI」を選択</li>
+</ol>
+<p><img src="./img/create_bastion2.png" alt="Bastionサーバ作成"></p>
+<ol start="3">
+<li>インスタンスタイプの選択
+「t2.micro」を選択し、「次のステップ: インスタンスの詳細の設定」を押す</li>
+</ol>
+<p><img src="./img/create_bastion3.png" alt="Bastionサーバ作成"></p>
+<ol start="4">
+<li>インスタンスの詳細の設定
+以下を入力し、「次のステップ: ストレージの追加」を押す</li>
+</ol>
+<ul>
+<li>ネットワーク: 「VPC作成」で作成したVPCを選択</li>
+<li>サブネット: Public subnet 1を選択</li>
+<li>自動割り当てパブリックIP: 「有効」を選択</li>
+</ul>
+<p><img src="./img/create_bastion4.png" alt="Bastionサーバ作成"></p>
+<ol start="5">
+<li>ストレージの追加
+「次のステップ: タグの追加」を押す
+<strong>設定値は変更なし</strong></li>
+</ol>
+<p><img src="./img/create_bastion5.png" alt="Bastionサーバ作成"></p>
+<ol start="6">
+<li>タグの追加
+「タグの追加」を押して、タグを追加し、「次のステップ: セキュリティグループの設定」を押す</li>
+</ol>
+<ul>
+<li>キー: Name</li>
+<li>値: 任意の値</li>
+</ul>
+<p><img src="./img/create_bastion6.png" alt="Bastionサーバ作成"></p>
+<ol start="7">
+<li>セキュリティグループの設定
+Bastionサーバ用のセキュリティグループを選択し、「確認と作成」を押す</li>
+</ol>
+<p><img src="./img/create_bastion7.png" alt="Bastionサーバ作成"></p>
+<ol start="8">
+<li>インスタンス作成の確認
+値を確認して問題なければ、「起動」を押す</li>
+</ol>
+<p><img src="./img/create_bastion8.png" alt="Bastionサーバ作成"></p>
+<ol start="9">
+<li>キーペアの選択
+キーペアを選択し、「インスタンスの作成」を押す</li>
+</ol>
+<p><img src="./img/create_bastion9.png" alt="Bastionサーバ作成"></p>
+<h1 id="db%E3%82%B5%E3%83%BC%E3%83%90%E4%BD%9C%E6%88%90">DBサーバ作成</h1>
+<h2 id="ec2%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E4%BD%9C%E6%88%90">EC2インスタンス作成</h2>
+<ul>
+<li>
+<p>Amazon Machine Image: Amazon Linux 2 AMI</p>
+</li>
+<li>
+<p>Instance Type: t2.small</p>
+</li>
+<li>
+<p>ネットワーク: 「VPC作成」で作成したVPC</p>
+</li>
+<li>
+<p>サブネット: Private subnet 1</p>
+</li>
+<li>
+<p>自動割り当てパブリックIP: 有効<br>
+<strong>「無効化」を選択してインターネットへのアクセスはNATゲートウェイを経由するのが正しいが、使用している環境ではNATゲートウェイが作れないため、「有効」を選択すること</strong></p>
+</li>
+<li>
+<p>タグ: キー: Name、値: Database Serverの名前（任意の値）</p>
+</li>
+<li>
+<p>セキュリティグループ: Database Server用のセキュリティグループ</p>
+</li>
+</ul>
+<h2 id="%E3%81%93%E3%82%8C%E4%BB%A5%E9%99%8D%E3%81%AE%E4%BD%9C%E6%A5%AD%E3%81%AFbastion%E3%82%B5%E3%83%BC%E3%83%90%E3%81%8B%E3%82%89db%E3%82%B5%E3%83%BC%E3%83%90%E3%81%ABssh%E3%81%A7%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%97%E3%81%A6%E5%AE%9F%E6%96%BD%E3%81%99%E3%82%8B">これ以降の作業はBastionサーバからDBサーバにSSHでログインして実施する</h2>
+<p><a href="./HowToLoginEC2.md">Bastionサーバから他のEC2インスタンスにSSHログインする方法</a></p>
+<h2 id="yum%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E4%BD%9C%E6%88%90">yumリポジトリファイル作成</h2>
+<p>以下のyumリポジトリファイルを作成する<br>
+<strong>※ sudoで実施する</strong></p>
+<ul>
+<li>
+<p>ファイル<br>
+/etc/yum.repos.d/mongodb-org-3.6.repo</p>
+</li>
+<li>
+<p>ファイルの内容</p>
+</li>
+</ul>
+<pre class="hljs"><code><div>[mongodb-org-3.6]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/3.6/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
+</div></code></pre>
+<h2 id="mondodb%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">MondoDBインストール</h2>
+<p>以下のコマンドでMongoDBをインストールする</p>
+<pre class="hljs"><code><div>$ sudo yum install -y mongodb-org
+</div></code></pre>
+<h2 id="mongodb%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E5%A4%89%E6%9B%B4">MongoDBパラメータ変更</h2>
+<p>他のサーバからアクセスできるようにBind IP Addressを変更する</p>
+<ul>
+<li>
+<p>ファイル<br>
+/etc/mongod.conf</p>
+</li>
+<li>
+<p>変更内容</p>
+<ul>
+<li>
+<p>変更前</p>
+<pre class="hljs"><code><div># network interfaces
+net:
+  port: 27017
+  bindIp: 127.0.0.1  # Listen to local interface only, comment to listen on all interfaces.
+</div></code></pre>
+</li>
+<li>
+<p>変更後</p>
+<pre class="hljs"><code><div># network interfaces
+net:
+  port: 27017
+  bindIp: 0.0.0.0  # Listen to local interface only, comment to listen on all interfaces.
+
+</div></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="mongodb%E8%B5%B7%E5%8B%95">MongoDB起動</h2>
+<p>以下のコマンドを実行してMongoDBを起動する</p>
+<ol>
+<li>systemdの定義ファイル再読み込み</li>
+</ol>
+<pre class="hljs"><code><div>sudo systemctl daemon-reload
+</div></code></pre>
+<ol start="2">
+<li>MongoDBを起動</li>
+</ol>
+<pre class="hljs"><code><div>$ sudo systemctl start mongod
+</div></code></pre>
+<ol start="3">
+<li>MongoDB自動起動設定</li>
+</ol>
+<pre class="hljs"><code><div>$ sudo systemctl enable mongod
+</div></code></pre>
+<h1 id="app%E3%82%B5%E3%83%BC%E3%83%90%E4%BD%9C%E6%88%90">APPサーバ作成</h1>
+<h2 id="ec2%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E4%BD%9C%E6%88%90">EC2インスタンス作成</h2>
+<ul>
+<li>
+<p>Amazon Machine Image: Amazon Linux 2 AMI</p>
+</li>
+<li>
+<p>Instance Type: t2.small</p>
+</li>
+<li>
+<p>ネットワーク: 「VPC作成」で作成したVPC</p>
+</li>
+<li>
+<p>サブネット: Private subnet 1</p>
+</li>
+<li>
+<p>自動割り当てパブリックIP: 有効<br>
+<strong>「無効化」を選択してインターネットへのアクセスはNATゲートウェイを経由するのが正しいが、使用している環境ではNATゲートウェイが作れないため、「有効」を選択すること</strong></p>
+</li>
+<li>
+<p>タグ: キー: Name、値: Application Serverの名前（任意の値）</p>
+</li>
+<li>
+<p>セキュリティグループ: Application Server用のセキュリティグループ</p>
+</li>
+</ul>
+<h2 id="%E3%81%93%E3%82%8C%E4%BB%A5%E9%99%8D%E3%81%AE%E4%BD%9C%E6%A5%AD%E3%81%AFbastion%E3%82%B5%E3%83%BC%E3%83%90%E3%81%8B%E3%82%89db%E3%82%B5%E3%83%BC%E3%83%90%E3%81%ABssh%E3%81%A7%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%97%E3%81%A6%E5%AE%9F%E6%96%BD%E3%81%99%E3%82%8B">これ以降の作業はBastionサーバからDBサーバにSSHでログインして実施する</h2>
+<p><a href="./HowToLoginEC2.md">Bastionサーバから他のEC2インスタンスにSSHログインする方法</a></p>
+<h2 id="nodejs%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">Nodejsインストール</h2>
+<p>以下のコマンドを実行してnodejsをインストールする</p>
+<pre class="hljs"><code><div>$ curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
+</div></code></pre>
+<pre class="hljs"><code><div>$ sudo yum install -y nodejs
+</div></code></pre>
+<p>以下のコマンドを実行してバージョンが正しく表示されればインストール成功</p>
+<pre class="hljs"><code><div>$ node -v
+v12.18.3
+</div></code></pre>
+<h2 id="yarn%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">yarnインストール</h2>
+<p>以下のコマンドを実行してyarnをインストールする</p>
+<pre class="hljs"><code><div>$ curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+</div></code></pre>
+<pre class="hljs"><code><div>$ sudo yum install -y yarn
+</div></code></pre>
+<p>以下のコマンドを実行してバージョンが正しく表示されればインストール成功</p>
+<pre class="hljs"><code><div>$ yarn -v
+1.22.4
+</div></code></pre>
+<h2 id="git%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">gitインストール</h2>
+<p>以下のコマンドを実行してgitをインストールする</p>
+<pre class="hljs"><code><div>$ sudo yum install -y git
+</div></code></pre>
+<p>以下のコマンドを実行してバージョンが正しく表示されればインストール成功</p>
+<pre class="hljs"><code><div>$ git --version
+git version 2.23.3
+</div></code></pre>
+<h2 id="growi%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">Growiインストール</h2>
+<ol>
+<li>
+<p>ソースコード取得<br>
+以下のコマンドを実行してGithubからGrowiのソースコードを取得する</p>
+<pre class="hljs"><code><div>$ sudo mkdir -p /opt
+$ cd /opt
+$ sudo git clone https://github.com/weseek/growi.git
+</div></code></pre>
+</li>
+<li>
+<p>最新バージョンをチェックアウト<br>
+以下のコマンドを実行して最新バージョンを確認する</p>
+<pre class="hljs"><code><div>$ git tag -l
+</div></code></pre>
+<p>以下のコマンドを実行して最新バージョンをチェックアウト</p>
+<pre class="hljs"><code><div>$ sudo git checkout -b vバージョン refs/tags/バージョン
+</div></code></pre>
+<p>以下のコマンドを実行してバージョンが正しく表示されればチェックアウト成功</p>
+<pre class="hljs"><code><div>git branch
+  master
+* バージョン
+</div></code></pre>
+</li>
+<li>
+<p>ビルド<br>
+以下のコマンドを実行してGrowiをビルドする</p>
+<pre class="hljs"><code><div>$ cd /opt/growi
+$ sudo yarn
+</div></code></pre>
+<p><strong>Warningメッセージは無視して良い</strong></p>
+</li>
+<li>
+<p>起動確認<br>
+以下のコマンドを実行してGrowiを起動する</p>
+<pre class="hljs"><code><div>$ sudo MONGO_URI=mongodb://DatabaseサーバのPrivate IP Address:27017/growi npm start
+</div></code></pre>
+<p><strong>Warningメッセージは無視して良い</strong></p>
+<p>以下のメッセージが表示されれば起動成功</p>
+<pre class="hljs"><code><div>INFO: growi:crowi/1356 on ip-10-0-30-131.ec2.internal: [production] Express server is listening on port 3000
+</div></code></pre>
+<p>起動が成功したらCTRL + CでGrowiを停止する</p>
+</li>
+</ol>
+<h2 id="growi%E8%87%AA%E5%8B%95%E8%B5%B7%E5%8B%95%E8%A8%AD%E5%AE%9A">Growi自動起動設定</h2>
+<ol>
+<li>ユニットファイルを作成<br>
+以下のようにユニットファイルを作成する<br>
+__ ※sudoで実行する__</li>
+</ol>
+<ul>
+<li>
+<p>ファイル<br>
+<code>/etc/systemd/system/growi.service</code></p>
+</li>
+<li>
+<p>ファイルの内容</p>
+<pre class="hljs"><code><div>[Unit]
+Description=Growi
+After=network.target mongod.service
+
+[Service]
+WorkingDirectory=/opt/growi
+EnvironmentFile=/etc/sysconfig/growi
+ExecStart=/usr/bin/npm start
+
+[Install]
+WantedBy=multi-user.target
+</div></code></pre>
+</li>
+</ul>
+<ol start="2">
+<li>コンフィグファイル作成<br>
+以下のようにコンフィグファイルを作成する<br>
+__ ※sudoで実行する__</li>
+</ol>
+<ul>
+<li>
+<p>ファイル<br>
+<code>/etc/sysconfig/growi</code></p>
+</li>
+<li>
+<p>ファイルの内容</p>
+<pre class="hljs"><code><div>NODE_ENV=production
+PASSWORD_SEED=&quot;`openssl rand -base64 128 | head -1`&quot;
+MONGO_URI=&quot;mongodb://Private IP Address of Database Server/growi&quot;
+FILE_UPLOAD=local
+</div></code></pre>
+</li>
+</ul>
+<ol start="3">
+<li>
+<p>サービス起動と自動起動設定<br>
+以下のコマンドを実行してGrowiの起動と自動起動を設定する</p>
+<pre class="hljs"><code><div>$ sudo systemctl daemon-reload
+</div></code></pre>
+<pre class="hljs"><code><div>$ sudo systemctl start growi
+</div></code></pre>
+<pre class="hljs"><code><div>$ sudo systemctl enable growi
+</div></code></pre>
+<p>以下のコマンドを実行して以下のメッセージが表示されれば起動成功</p>
+<pre class="hljs"><code><div>$ sudo systemctl status -l growi
+</div></code></pre>
+<pre class="hljs"><code><div>Jul 26 06:17:57 ip-10-0-30-131.ec2.internal npm[1531]: [2020-07-26T06:17:57.945Z]  INFO: growi:crowi/1777 on ip-10-0-30-131.ec2.internal: [production] Express server is listening on port 3000
+</div></code></pre>
+</li>
+</ol>
+<h1 id="ami%E4%BD%9C%E6%88%90">AMI作成</h1>
+<p>サービスからEC2を選択し、Amazon Machine Imageを作成する</p>
+<ol>
+<li>
+<p>「イメージの作成」を選択
+<img src="./img/create_ami1.png" alt="AMI作成"></p>
+</li>
+<li>
+<p>以下を入力し、「イメージの作成」を押す</p>
+</li>
+</ol>
+<ul>
+<li>イメージ名: AMIの名前（任意の値）
+<img src="./img/create_ami2.png" alt="AMI作成"></li>
+</ul>
+<h1 id="%E8%B5%B7%E5%8B%95%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E4%BD%9C%E6%88%90">起動テンプレート作成</h1>
+<p>サービスからEC2を選択し、起動テンプレートを作成する</p>
+<ol>
+<li>
+<p>「起動テンプレートを作成」を押す</p>
+</li>
+<li>
+<p>以下を入力し、「起動テンプレートを作成」を押す</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>起動テンプレート名と説明
+<img src="./img/create_lc1.png" alt="AMI作成"></p>
+</li>
+<li>
+<p>Amazonマシーンイメージ（AMI）<br>
+「AMI作成」で作成したAMIを選択
+<img src="./img/create_lc2.png" alt="AMI作成"></p>
+</li>
+<li>
+<p>インスタンスタイプ<br>
+「t2.small」を選択
+<img src="./img/create_lc3.png" alt="AMI作成"></p>
+</li>
+<li>
+<p>キーペア<br>
+作成済みのキーペアを選択
+<img src="./img/create_lc4.png" alt="AMI作成"></p>
+</li>
+<li>
+<p>セキュリティグループ<br>
+Applicationサーバのセキュリティグループを選択
+<img src="./img/create_lc5.png" alt="AMI作成"></p>
+</li>
+<li>
+<p>リソースタグ<br>
+EC2インスタンスにつけるタグを設定
+<img src="./img/create_lc6.png" alt="AMI作成"></p>
+</li>
+</ul>
+<h1 id="%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E4%BD%9C%E6%88%90">ターゲットグループ作成</h1>
+<p>サービスメニューからEC2を選択し、ターゲットグループを作成する</p>
+<ol>
+<li>
+<p>「ターゲットグループの作成」を押す
+<img src="./img/create_tg1.png" alt="ターゲットグループ作成"></p>
+</li>
+<li>
+<p>以下を入力し、「次へ」を押す</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>基本的な設定</p>
+<ul>
+<li>
+<p>ターゲットタイプの選択: 「インスタンス」を選択</p>
+</li>
+<li>
+<p>ターゲットグループ名: ターゲットグループの名前（任意の値）</p>
+</li>
+<li>
+<p>プロトコル: 「HTTP」を選択</p>
+</li>
+<li>
+<p>ポート: 3000</p>
+</li>
+<li>
+<p>VPC: 「VPC作成」で作成したVPCを選択</p>
+<p><img src="./img/create_tg2.png" alt="ターゲットグループ作成"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>ヘルスチェック</p>
+<ul>
+<li>ヘルスチェックプロトコル: 「HTTP」を選択</li>
+<li>ヘルスチェックパス: 「/」</li>
+<li>成功コード: 302
+<img src="./img/create_tg3.png" alt="ターゲットグループ作成"></li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>「ターゲットグループの作成」を押す<br>
+値を変更せずに「ターゲットグループの作成」を押す
+<img src="./img/create_tg4.png" alt="ターゲットグループ作成"></li>
+</ol>
+<h1 id="load-balancer%E4%BD%9C%E6%88%90">Load Balancer作成</h1>
+<p>サービスからEC2を選択し、ロードバランサーを作成する</p>
+<ol>
+<li>
+<p>「ロードバランサーの作成」を押す
+<img src="./img/create_lb1.png" alt="ターゲットグループ作成"></p>
+</li>
+<li>
+<p>「HTTP/HTTPS」の「作成」を押す
+<img src="./img/create_lb2.png" alt="ターゲットグループ作成"></p>
+</li>
+<li>
+<p>以下の値を入力し、「次の手順: セキュリティ設定の構成」を押す</p>
+</li>
+</ol>
+<ul>
+<li>名前: ロードバランサーの名前（任意の値）</li>
+<li>スキーム: 「インターネット向け」を選択（デフォルト）</li>
+<li>IPアドレスタイプ: 「ipv4」を選択（デフォルト）</li>
+<li>ロードバランサーのプロトコル: 「HTTP」を選択</li>
+<li>ロードバランサーのポート: 80</li>
+<li>VPC: 「VPC作成」で作成したVPCを選択</li>
+<li>アベイラビリティーゾーン: 表示されているアベイラビリティーゾーンを選択、Public subnet 1,2を選択
+<img src="./img/create_lb3.png" alt="ターゲットグループ作成"></li>
+</ul>
+<ol start="4">
+<li>
+<p>「次の手順: セキュリティグループの設定」を押す
+<img src="./img/create_lb4.png" alt="ターゲットグループ作成"></p>
+</li>
+<li>
+<p>以下の値を入力し、「次の手順: ルーティングの設定」を押す</p>
+</li>
+</ol>
+<ul>
+<li>セキュリティグループの割り当て: 「既存のセキュリティグループを選択する」を選択</li>
+<li>セキュリティグループ: Webサーバ用のセキュリティグループを選択
+<img src="./img/create_lb5.png" alt="ターゲットグループ作成"></li>
+</ul>
+<ol start="6">
+<li>以下の値を入力し、「次の手順: ターゲットの登録」を押す</li>
+</ol>
+<ul>
+<li>ターゲットグループ: 「既存のターゲットグループ」を選択</li>
+<li>名前: 「ターゲットグループ作成」で作成したターゲットグループを選択
+<img src="./img/create_lb6.png" alt="ターゲットグループ作成"></li>
+</ul>
+<ol start="7">
+<li>
+<p>「次の手順: 確認」を押す
+<img src="./img/create_lb7.png" alt="ターゲットグループ作成"></p>
+</li>
+<li>
+<p>「作成」を押す
+<img src="./img/create_lb8.png" alt="ターゲットグループ作成"></p>
+</li>
+</ol>
+<h1 id="auto-scaling%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E4%BD%9C%E6%88%90">Auto Scalingグループ作成</h1>
+<ol>
+<li>
+<p>「Auto Scalingグループの作成」を押す
+<img src="./img/create_asg1.png" alt="ターゲットグループ作成"></p>
+</li>
+<li>
+<p>起動テンプレートを選択<br>
+「起動テンプレート作成」で作成した起動テンプレートを選択し、「次のステップ」を押す
+<img src="./img/create_asg2.png" alt="ターゲットグループ作成"></p>
+</li>
+<li>
+<p>Auto Scalingグループ設定
+以下を入力し、「次の手順: スケーリングポリシーの設定」を押す</p>
+</li>
+</ol>
+<ul>
+<li>グループ名: Auto Scalingグループの名前（任意の値）</li>
+<li>ネットワーク: 「VPC作成」で作成したVPCを選択</li>
+<li>サブネット: 「サブネットの作成」で作成したPublic subnet 1,2を選択</li>
+<li>ロードバランシング: 「ひとつまたは複数のロードバランサーからトラフィックを受信する」にチェック</li>
+<li>ターゲットグループ: 「ターゲットグループ作成」で作成したターゲットグループを選択</li>
+<li>ヘルスチェックのタイプ: 「ELB」を選択
+<img src="./img/create_asg3.png" alt="ターゲットグループ作成"></li>
+</ul>
+<ol start="4">
+<li>スケーリングポリシー設定
+以下を入力し、「確認」を押す</li>
+</ol>
+<ul>
+<li>メトリクスタイプ: 「CPUの平均使用率」を選択</li>
+<li>ターゲット値: 50
+<img src="./img/create_asg4.png" alt="ターゲットグループ作成"></li>
+</ul>
+<ol start="5">
+<li>確認、作成
+値を確認し、問題がなければ「Auto Scalingグループの作成」を押す
+<img src="./img/create_asg5.png" alt="ターゲットグループ作成"></li>
+</ol>
+<h1 id="%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D">動作確認</h1>
+<h2 id="growi">Growi</h2>
+<p>WebブラウザからロードバランサーのDNS名でアクセスしてGrowiの画面が表示されることを確認する</p>
+<ul>
+<li>ロードバランサーのDNS名<br>
+以下の画面で確認する
+<img src="./img/lb_dns.png" alt="ターゲットグループ作成"></li>
+</ul>
+<h2 id="auto-scaling%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97">Auto Scalingグループ</h2>
+<ol>
+<li>
+<p>BastionサーバからApplicationサーバのインスタンスにSSHログインする</p>
+</li>
+<li>
+<p>Growiを停止する</p>
+<pre class="hljs"><code><div>$ sudo systemctl stop growi
+</div></code></pre>
+</li>
+<li>
+<p>インスタンスが入れ替わることを確認</p>
+</li>
+</ol>
+
+</body>
+</html>
