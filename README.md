@@ -467,7 +467,7 @@ __ ※sudoで実行する__
   ```
   NODE_ENV=production
   PASSWORD_SEED="`openssl rand -base64 128 | head -1`"
-  MONGO_URI="mongodb://Private IP Address of Database Server/growi"
+  MONGO_URI="mongodb://Private IP Address of Database Server:27017/growi"
   FILE_UPLOAD=local
   ```
 
