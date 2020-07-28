@@ -424,6 +424,8 @@ git version 2.23.3
     $ sudo MONGO_URI=mongodb://DatabaseサーバのPrivate IP Address:27017/growi npm start
     ```
 
+    __DatabaseサーバのPrivate IP Address__ は、自身のDBサーバのPrivate IP Addressに変更する
+
     __Warningメッセージは無視して良い__
 
     以下のメッセージが表示されれば起動成功
@@ -470,6 +472,8 @@ __ ※sudoで実行する__
   MONGO_URI="mongodb://Private IP Address of Database Server:27017/growi"
   FILE_UPLOAD=local
   ```
+
+  __Private IP Address of Database Server__ の部分は、自身のDBサーバのPrivate IP Addressに変更すること
 
 3. サービス起動と自動起動設定  
 以下のコマンドを実行してGrowiの起動と自動起動を設定する

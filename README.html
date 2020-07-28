@@ -856,7 +856,7 @@ net:
 <p>セキュリティグループ: Application Server用のセキュリティグループ</p>
 </li>
 </ul>
-<h2 id="%E3%81%93%E3%82%8C%E4%BB%A5%E9%99%8D%E3%81%AE%E4%BD%9C%E6%A5%AD%E3%81%AFbastion%E3%82%B5%E3%83%BC%E3%83%90%E3%81%8B%E3%82%89db%E3%82%B5%E3%83%BC%E3%83%90%E3%81%ABssh%E3%81%A7%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%97%E3%81%A6%E5%AE%9F%E6%96%BD%E3%81%99%E3%82%8B">これ以降の作業はBastionサーバからDBサーバにSSHでログインして実施する</h2>
+<h2 id="%E3%81%93%E3%82%8C%E4%BB%A5%E9%99%8D%E3%81%AE%E4%BD%9C%E6%A5%AD%E3%81%AFbastion%E3%82%B5%E3%83%BC%E3%83%90%E3%81%8B%E3%82%89app%E3%82%B5%E3%83%BC%E3%83%90%E3%81%ABssh%E3%81%A7%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%97%E3%81%A6%E5%AE%9F%E6%96%BD%E3%81%99%E3%82%8B">これ以降の作業はBastionサーバからAppサーバにSSHでログインして実施する</h2>
 <p><a href="./HowToLoginEC2.md">Bastionサーバから他のEC2インスタンスにSSHログインする方法</a></p>
 <h2 id="nodejs%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">Nodejsインストール</h2>
 <p>以下のコマンドを実行してnodejsをインストールする</p>
@@ -923,6 +923,7 @@ $ sudo yarn
 以下のコマンドを実行してGrowiを起動する</p>
 <pre class="hljs"><code><div>$ sudo MONGO_URI=mongodb://DatabaseサーバのPrivate IP Address:27017/growi npm start
 </div></code></pre>
+<p><strong>DatabaseサーバのPrivate IP Address</strong> は、自身のDBサーバのPrivate IP Addressに変更する</p>
 <p><strong>Warningメッセージは無視して良い</strong></p>
 <p>以下のメッセージが表示されれば起動成功</p>
 <pre class="hljs"><code><div>INFO: growi:crowi/1356 on ip-10-0-30-131.ec2.internal: [production] Express server is listening on port 3000
@@ -971,9 +972,10 @@ __ ※sudoで実行する__</li>
 <p>ファイルの内容</p>
 <pre class="hljs"><code><div>NODE_ENV=production
 PASSWORD_SEED=&quot;`openssl rand -base64 128 | head -1`&quot;
-MONGO_URI=&quot;mongodb://Private IP Address of Database Server/growi&quot;
+MONGO_URI=&quot;mongodb://Private IP Address of Database Server:27017/growi&quot;
 FILE_UPLOAD=local
 </div></code></pre>
+<p><strong>Private IP Address of Database Server</strong> の部分は、自身のDBサーバのPrivate IP Addressに変更すること</p>
 </li>
 </ul>
 <ol start="3">
