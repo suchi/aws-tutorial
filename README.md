@@ -328,7 +328,7 @@ __「無効化」を選択してインターネットへのアクセスはNATゲ
 * タグ: キー: Name、値: Application Serverの名前（任意の値）
 * セキュリティグループ: Application Server用のセキュリティグループ
 
-## これ以降の作業はBastionサーバからDBサーバにSSHでログインして実施する
+## これ以降の作業はBastionサーバからAppサーバにSSHでログインして実施する
 [Bastionサーバから他のEC2インスタンスにSSHログインする方法](./HowToLoginEC2.md)
 
 ## Nodejsインストール
