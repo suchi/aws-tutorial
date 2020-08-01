@@ -1,0 +1,4 @@
+NODE_ENV=production
+PASSWORD_SEED="`openssl rand -base64 128 | head -1`"
+MONGO_URI="mongodb://{{ growi.mongodb }}/growi"
+FILE_UPLOAD=local

@@ -1,0 +1,11 @@
+[Unit]
+Description=Growi
+After=network.target mongod.service
+
+[Service]
+WorkingDirectory=/opt/growi
+EnvironmentFile=/etc/sysconfig/growi
+ExecStart=/usr/bin/npm start
+
+[Install]
+WantedBy=multi-user.target

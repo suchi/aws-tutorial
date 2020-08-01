@@ -1,0 +1,28 @@
+- name: Copy mongodb repository file
+  become: true
+  copy:
+    src: ../files/mongodb-org-3.6.repo
+    dest: /etc/yum.repos.d/mongodb-org-3.6.repo
+    owner: root
+    group: root
+    mode: '0644'
+- name: Install mongodb
+  become: yes
+  yum:
+    name: mongodb-org
+    state: latest
+- name: Copy mongodb configuration file
+  become: yes
+  template:
+    src: mongod.conf
+    dest: /etc/mongod.conf
+    owner: root
+    group: root
+    mode: '0644'
+- name: start mongodb
+  become: yes
+  systemd:
+    name: mongod
+    daemon-reload: yes
+    enabled: yes
+    state: started

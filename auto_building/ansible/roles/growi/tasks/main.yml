@@ -1,0 +1,51 @@
+- name: Install git
+  become: yes
+  yum:
+    name: git
+    state: latest
+
+- name: Make installed directory
+  become: yes
+  file:
+    path: "{{ growi.installed_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Clone growi
+  become: yes
+  git:
+    repo: "{{ growi.url }}"
+    dest: "{{ growi.installed_dir }}/growi"
+    version: "{{ growi.version }}"
+
+- name: Packaging growi
+  become: yes
+  yarn:
+    path: /opt/growi
+    state: latest
+
+- name: Copy growi unit file
+  become: true
+  copy:
+    src: growi.service
+    dest: /etc/systemd/system/growi.service
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Copy growi configuration file
+  become: yes
+  template:
+    src: growi
+    dest: /etc/sysconfig/growi
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: start growi
+  become: yes
+  systemd:
+    name: growi
+    daemon-reload: yes
+    enabled: yes
+    state: started

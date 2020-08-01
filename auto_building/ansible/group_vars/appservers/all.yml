@@ -1,0 +1,13 @@
+nodejs:
+  url: https://rpm.nodesource.com/setup_12.x 
+  checksum: 9ed28d794edf78c6386d8e3a2bdef9096d5f9cb72e3fde88f2bc6a7a62f26bf0
+  dest: /home/ec2-user/setup.sh
+yarn:
+  url: https://dl.yarnpkg.com/rpm/yarn.repo
+  checksum: f082589ae243fdaaaec735c7cb898624f57d9f93b77e1be259955b678fcde664
+  dest: /etc/yum.repos.d/yarn.repo
+growi:
+  url: https://github.com/weseek/growi.git
+  installed_dir: /opt
+  version: v4.0.9
+  mongodb:  10.0.30.146:27017

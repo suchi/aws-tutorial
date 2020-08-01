@@ -1,0 +1,37 @@
+- name: Installed nodejs?
+  shell: node -v
+  register: installed_nodejs
+  failed_when: no
+- name: Get setup nodejs script
+  get_url:
+    url: "{{ nodejs.url }}"
+    sha256sum: "{{ nodejs.checksum }}"
+    dest: "{{ nodejs.dest }}"
+    mode: 0755
+  when: installed_nodejs.rc != 0
+- name: Setup installing nodejs
+  become: yes
+  shell: "{{ nodejs.dest }}"
+  when: installed_nodejs.rc != 0
+- name: Install nodejs
+  become: yes
+  yum:
+    name: nodejs
+    state: latest
+- name: Installed yarn?
+  shell: yarn -v
+  register: installed_yarn
+  failed_when: no
+- name: Get setup yarn script
+  become: yes
+  get_url:
+    url: "{{ yarn.url }}"
+    sha256sum: "{{ yarn.checksum }}"
+    dest: "{{ yarn.dest }}"
+    mode: 0755
+  when: installed_yarn.rc != 0
+- name: Install yarn
+  become: yes
+  yum:
+    name: yarn
+    state: latest
