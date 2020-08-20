@@ -1,3 +1,6 @@
+Parameters:
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
 Resources:
   MyVPC:
     Type: AWS::EC2::VPC
@@ -227,7 +230,8 @@ Resources:
     Properties:
       ImageId: ami-02354e95b39ca8dec
       InstanceType: t2.micro
-      KeyName: hamajo
+      KeyName:
+        Ref: KeyName
       NetworkInterfaces:
         - AssociatePublicIpAddress: true
           DeviceIndex: 0
@@ -243,7 +247,8 @@ Resources:
     Properties:
       ImageId: ami-02354e95b39ca8dec
       InstanceType: t2.small
-      KeyName: hamajo
+      KeyName:
+        Ref: KeyName
       NetworkInterfaces:
         - AssociatePublicIpAddress: true
           DeviceIndex: 0
@@ -259,7 +264,8 @@ Resources:
     Properties:
       ImageId: ami-02354e95b39ca8dec
       InstanceType: t2.small
-      KeyName: hamajo
+      KeyName:
+        Ref: KeyName
       NetworkInterfaces:
         - AssociatePublicIpAddress: true
           DeviceIndex: 0

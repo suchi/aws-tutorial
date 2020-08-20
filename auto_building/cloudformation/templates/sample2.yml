@@ -1,0 +1,100 @@
+Parameters:
+  LaunchTemplateName:
+    Type: String
+    Default: app-template
+    Description: Enter a application server's launch template name.
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+  ImageId:
+    Type: AWS::EC2::Image::Id
+  SecurityGroupWeb:
+    Type: AWS::EC2::SecurityGroup::Id
+  SecurityGroupApp:
+    Type: AWS::EC2::SecurityGroup::Id
+  VPC:
+    Type: AWS::EC2::VPC::Id
+  SubnetWeb:
+    Type: List<AWS::EC2::Subnet::Id>
+  SubnetApp:
+    Type: List<AWS::EC2::Subnet::Id>
+Resources:
+  AppLaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateData:
+        InstanceType: t2.small
+        KeyName:
+          Ref: KeyName
+        ImageId:
+          Ref: ImageId
+        SecurityGroupIds:
+          - Ref: SecurityGroupApp
+        TagSpecifications:
+          - ResourceType: instance
+            Tags:
+              - Key: Name
+                Value: app-asg
+      LaunchTemplateName:
+        Ref: LaunchTemplateName
+  AppTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      Name: app-tg
+      TargetType: instance
+      Port: 3000
+      Protocol: HTTP
+      VpcId:
+        Ref: VPC
+      HealthCheckEnabled: true
+      HealthCheckIntervalSeconds: 30
+      HealthCheckPath: /
+      HealthCheckProtocol: HTTP
+      HealthCheckTimeoutSeconds: 5
+      HealthyThresholdCount: 5
+      UnhealthyThresholdCount: 2
+  AppLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: app-lb
+      Type: application
+      Scheme: internet-facing
+      SecurityGroups:
+        - Ref: SecurityGroupWeb
+      IpAddressType: ipv4
+      Subnets:
+        Ref: SubnetWeb
+      LoadBalancerAttributes:
+        - Key: access_logs.s3.enabled
+          Value: false
+        - Key: deletion_protection.enabled
+          Value: false
+        - Key: idle_timeout.timeout_seconds
+          Value: 60
+  AppLoadBalancerListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn:
+        Ref: AppLoadBalancer
+      Port: 80
+      Protocol: HTTP
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: !Ref AppTargetGroup
+  AppAutoScalingGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      AutoScalingGroupName: app-asg
+      Cooldown: 300
+      HealthCheckGracePeriod: 300
+      HealthCheckType: ELB
+      LaunchTemplate:
+        LaunchTemplateId:
+          Ref: AppLaunchTemplate
+        Version: !GetAtt AppLaunchTemplate.LatestVersionNumber
+      MaxSize: 2
+      MinSize: 1
+      DesiredCapacity: 1
+      VPCZoneIdentifier:
+        Ref: SubnetApp
+      TargetGroupARNs:
+        - Ref: AppTargetGroup
