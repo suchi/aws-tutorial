@@ -10,4 +10,4 @@ growi:
   url: https://github.com/weseek/growi.git
   installed_dir: /opt
   version: v4.0.9
-  mongodb:  10.0.30.146:27017
+  mongodb:  [Change your database server's private address]:27017
