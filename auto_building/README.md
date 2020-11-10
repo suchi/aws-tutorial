@@ -201,6 +201,8 @@ CloudFormationを使用して以下のリソースを作成する
   * HealthCheckTimeoutSeconds
   * HealthyThresholdCount
   * UnhealthyThresholdCount
+  * Matcher
+    * HttpCode
 
 ### ロードバランサー
 * Type: AWS::ElasticLoadBalancingV2::LoadBalancer
