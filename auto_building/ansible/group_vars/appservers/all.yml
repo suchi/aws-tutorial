@@ -1,6 +1,6 @@
 nodejs:
   url: https://rpm.nodesource.com/setup_12.x 
-  checksum: 9ed28d794edf78c6386d8e3a2bdef9096d5f9cb72e3fde88f2bc6a7a62f26bf0
+  checksum: c68d96507d5b884470f5a6bc3e671d5003903c8a82d59b6e8ab74c19cf0519d4
   dest: /home/ec2-user/setup.sh
 yarn:
   url: https://dl.yarnpkg.com/rpm/yarn.repo
