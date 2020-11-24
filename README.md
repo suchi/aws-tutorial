@@ -54,7 +54,7 @@
   |種類    |Destination|Target          |Note|
   |:------|:----------|:---------------|:----------------------------------|
   |Public |10.0.0.0/16|local           |                                   |
-  |       |0.0.0.0/0  |Interbet Gateway|                                   |
+  |       |0.0.0.0/0  |Internet Gateway|                                   |
   |Private|10.0.0.0/16|local           |                                   |
   |       |0.0.0.0/0  |NAT Gateway     |今回は、TargetにInternet Gatewayを指定|
 
@@ -208,7 +208,7 @@
 ![Bastionサーバ作成](./img/create_bastion4.png)
 
 5. ストレージの追加
-「次のステップ: タグの追加」を押す
+「次のステップ: タグの追加」を押す
 __設定値は変更なし__
 
 ![Bastionサーバ作成](./img/create_bastion5.png)
